@@ -9,17 +9,19 @@ public class Location {
     private ObjectId _id;
     private Long latitude;
     private Long longitude;
+    private double position[];
     private String name;
 
     public Location () {
 
     }
 
-    public Location(ObjectId _id, Long latitude, Long longitude, String name) {
+    public Location(ObjectId _id, Long latitude, Long longitude, String name, double position[]) {
         this._id = _id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
+        this.position = position;
     }
 
     public ObjectId get_id() {
@@ -52,5 +54,13 @@ public class Location {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double[] getPosition() {
+        return position;
+    }
+
+    public void setPosition(double[] position) {
+        this.position = position;
     }
 }
