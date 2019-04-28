@@ -50,9 +50,14 @@ public class RestController {
         return locationRepository.findBy_id(id);
     }
 
-    @RequestMapping(value = "/getLocation", method = RequestMethod.GET)
-    public Location getLocation(@Valid @RequestBody Location location) {
-        return locationRepository.getLocation(location.getLatitude(), location.getLongitude());
+    @RequestMapping(value = "/getSpecificLocation", method = RequestMethod.GET)
+    public Location getSpecificLocation(@Valid @RequestBody Location location) {
+        return locationRepository.getSpecificLocation(location.getName());
+    }
+
+    @RequestMapping(value = "/getNearByLocations/{radius}, method = RequestMethod.GET")
+    public List<Location> getNearbyLocations(@Valid @RequestBody Location location, @PathVariable("radius") Long radius) {
+        return locationRepository.getNearbyLocations(location.getLatitude(), location.getLongitude(), radius);
     }
 
 }
